@@ -15,7 +15,7 @@ export const FontControl = () => {
         <CardDescription>フォントに関する各種設定</CardDescription>
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-3 px-4">
-        <ColorCustomizer />
+        <ColorCustomizer label="文字の色" />
       </CardContent>
     </Card>
   );
