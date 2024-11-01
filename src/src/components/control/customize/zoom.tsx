@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/select";
 import { useZoom } from "@/hooks/use-zoom";
 import { cn } from "@/utils/cn";
-import { buttonVariants } from "@/components/ui/button";
 
 const zoomItems = [
   {
@@ -40,9 +39,11 @@ export const ZoomCustomizer = () => {
 
   return (
     <Select defaultValue="auto" onValueChange={handleZoom}>
-      <SelectTrigger className={cn(
-        "bg-card absolute bottom-4 left-4 flex w-32 items-center justify-start gap-1 rounded outline-none font-noto-sans"
-        )}>
+      <SelectTrigger
+        className={cn(
+          "absolute bottom-4 left-4 flex w-32 items-center justify-start gap-1 rounded bg-card font-noto-sans outline-none",
+        )}
+      >
         <MagnifyingGlassIcon />
         <SelectValue placeholder="ズーム" />
         <ChevronDownIcon className="ml-auto h-4 w-4 opacity-50" />

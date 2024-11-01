@@ -1,3 +1,4 @@
+import { ColorCustomizer } from "@/components/control/customize/color";
 import {
   Card,
   CardContent,
@@ -5,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ColorCustomizer } from "@/components/control/customize/color";
 
 export const FontControl = () => {
   return (

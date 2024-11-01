@@ -13,17 +13,17 @@ export const useControlPanel = () => {
     if (!open) {
       setShowCard(false);
       return;
-    };
+    }
     const timer = setTimeout(() => {
       setShowCard(true);
     }, 150);
 
-    return () => clearInterval(timer)
+    return () => clearInterval(timer);
   }, [open]);
 
   return {
     open,
     showCard,
-    toggleOpen
-  }
-}
+    toggleOpen,
+  };
+};
