@@ -17,6 +17,7 @@ export const useTheme = () => {
 
   return {
     theme,
+    setTheme,
     setLight,
     setDark,
     setSystem,
