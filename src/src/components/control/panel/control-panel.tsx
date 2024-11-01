@@ -22,6 +22,7 @@ import { useTheme } from "@/hooks/use-theme";
 import { DesktopIcon } from "@radix-ui/react-icons";
 import { ThemeCustomizer } from "@/components/control/customize/theme";
 import { AppearanceControl } from "@/components/control/panel/appearance";
+import { FontControl } from "@/components/control/panel/font";
 
 export const ControlPanel = () => {
   const { theme, setTheme } = useTheme();
@@ -41,7 +42,10 @@ export const ControlPanel = () => {
       )}>
         <div className="flex flex-col gap-4 p-4">
           {showCard && (
-            <AppearanceControl />
+            <>
+              <AppearanceControl />
+              <FontControl />
+            </>
           )}
         </div>
       </ScrollArea>
