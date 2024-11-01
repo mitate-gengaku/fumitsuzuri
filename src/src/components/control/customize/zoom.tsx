@@ -33,7 +33,7 @@ const zoomItems = [
   },
 ];
 
-export const Zoom = () => {
+export const ZoomCustomizer = () => {
   const { handleZoom } = useZoom();
 
   return (
