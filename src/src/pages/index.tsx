@@ -9,13 +9,13 @@ const Home = () => {
   const { toggleOpen } = useControlPanel();
 
   return (
-    <main className="relative flex h-screen w-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
-      <div className="flex h-full w-full p-4">
+    <main className="flex h-screen w-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
+      <div className="relative flex h-full w-full p-4">
         <Button
           variant={"outline"}
           size={"icon"}
           onClick={() => toggleOpen()}
-          className="ml-auto"
+          className="absolute top-4 right-4"
         >
           <PanelRightIcon />
         </Button>

@@ -8,7 +8,7 @@ interface IExportFile {
 export const useDownload = () => {
   const form = useForm<IExportFile>({
     defaultValues: {
-      name: "",
+      name: "download",
       extension: "",
     },
   });
@@ -16,7 +16,7 @@ export const useDownload = () => {
   const onDownload = (values: IExportFile) => {
     const { name, extension } = values;
 
-    const finalFileName = name || "download";
+    const finalFileName = name;
 
     // ここでコンテンツを各ファイルに合うように変換する
 

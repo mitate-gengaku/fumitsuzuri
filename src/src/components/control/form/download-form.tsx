@@ -43,6 +43,14 @@ export const DownloadForm = () => {
               value: true,
               message: "必須項目です",
             },
+            max: {
+              value: 36,
+              message: "最大36文字まで入力できます"
+            },
+            min: {
+              value: 4,
+              message: "4文字以上入力してください"
+            }
           }}
           autoComplete="on"
           className="focus:outline-sky-500"
