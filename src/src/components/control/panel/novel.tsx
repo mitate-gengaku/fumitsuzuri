@@ -1,4 +1,5 @@
 import { NovelFormatCustomizer } from "../customize/novel-format";
+import { NovelTagsCustomizer } from "../customize/novel-tags";
 
 import {
   Card,
@@ -7,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { NovelTagsCustomizer } from "../customize/novel-tags";
 
 export const NovelControl = () => {
   return (

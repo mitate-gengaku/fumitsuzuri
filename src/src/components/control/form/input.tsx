@@ -8,13 +8,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 
-export interface FormInputProps extends React.ComponentProps<typeof Input> {}
-
 export const FormInput = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
-  props: FormInputProps & UseControllerProps<TFieldValues, TName>,
+  props: React.ComponentProps<typeof Input> &
+    UseControllerProps<TFieldValues, TName>,
 ) => {
   const {
     field,

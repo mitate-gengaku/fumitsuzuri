@@ -1,17 +1,6 @@
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { useState } from "react"
-import { cn } from "@/utils/cn"
-import { XIcon } from "lucide-react"
-import { useForm, UseFormClearErrors, UseFormReset } from "react-hook-form"
-import {
-  FieldPath,
-  FieldValues,
-  UseControllerProps,
-  useController,
-} from "react-hook-form";
-import { atom, useAtom } from "jotai"
+import { atom, useAtom } from "jotai";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const tagsAtom = atom<string[]>([]);
 
@@ -24,36 +13,36 @@ export const useInputTags = () => {
   const [tags, setTags] = useAtom<string[]>(tagsAtom);
   const form = useForm({
     defaultValues: {
-      value: ""
+      value: "",
     },
   });
   const onSetFocus = (value: boolean | (() => boolean)) => {
-    setFocus(value)
-  }
+    setFocus(value);
+  };
   const onSetTags = (value: string[] | (() => string[])) => {
-    setTags(value)
-  }
+    setTags(value);
+  };
 
   const onSubmit = ({ value }: IValue) => {
     if (value.length < 3) {
       form.setError("value", {
-        message: "3文字以上で入力してください"
-      })
+        message: "3文字以上で入力してください",
+      });
       return;
     }
     if (tags.length >= 4) {
       form.setError("value", {
-        message: "最大4つまでタグを入力できます"
-      })
+        message: "最大4つまでタグを入力できます",
+      });
       return;
     }
-    setTags([ ...tags, value ])
+    setTags([...tags, value]);
     form.reset();
-  }
+  };
 
   const onDeleteTag = () => {
-    setTags((tags) => tags.slice(0, -1))
-  }
+    setTags((tags) => tags.slice(0, -1));
+  };
 
   return {
     form,
@@ -62,6 +51,6 @@ export const useInputTags = () => {
     onSetFocus,
     onSetTags,
     onSubmit,
-    onDeleteTag
-  }
-}
+    onDeleteTag,
+  };
+};

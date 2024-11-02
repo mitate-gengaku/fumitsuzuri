@@ -4,6 +4,8 @@ import { ZoomCustomizer } from "@/components/control/customize/zoom";
 import { ControlPanel } from "@/components/control/panel/control-panel";
 import { Button } from "@/components/ui/button";
 import { useControlPanel } from "@/hooks/use-control-panel";
+import { cn } from "@/utils/cn";
+import { FileIcon, FilePlusIcon } from "@radix-ui/react-icons";
 
 const Home = () => {
   const { toggleOpen } = useControlPanel();
