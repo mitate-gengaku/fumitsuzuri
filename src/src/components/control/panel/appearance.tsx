@@ -23,7 +23,7 @@ export const AppearanceControl = () => {
             <ThemeCustomizer />
           </div>
         </div>
-        <ColorCustomizer label="背景色" />
+        <ColorCustomizer label="背景色" colorKey="background" />
       </CardContent>
     </Card>
   );

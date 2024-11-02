@@ -35,6 +35,7 @@ export const DownloadForm = () => {
           ファイル名
         </Label>
         <FormInput
+          id="name"
           name="name"
           control={form.control}
           rules={{
@@ -43,17 +44,18 @@ export const DownloadForm = () => {
               message: "必須項目です",
             },
           }}
+          autoComplete="on"
           className="focus:outline-sky-500"
         />
       </div>
       <div className="col-span-2">
         <Label htmlFor="extension" className="text-xs text-gray-500">
-          ファイルの種類
+          ファイルの拡張子
         </Label>
         <FormSelect
           name="extension"
           control={form.control}
-          placeholder="ファイルの種類"
+          placeholder="ファイルの拡張子"
           rules={{
             required: {
               value: true,

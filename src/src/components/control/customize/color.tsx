@@ -4,14 +4,19 @@ import { useColor } from "@/hooks/use-color";
 
 interface Props {
   label: string;
+  colorKey: string;
 }
 
 export const ColorCustomizer = (props: Props) => {
-  const { color, onSetColor, onSetOpacity } = useColor();
+  const {
+    label,
+    colorKey
+  } = props;
+  const { color, onSetColor, onSetOpacity } = useColor(colorKey);
 
   return (
     <div className="col-span-2 flex flex-col gap-1">
-      <p className="text-xs text-muted-foreground">{props.label}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
       <div className="flex items-center gap-2">
         <Input
           type="color"

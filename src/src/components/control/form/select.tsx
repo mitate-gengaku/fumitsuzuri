@@ -38,10 +38,8 @@ export const FormSelect = <
   return (
     <>
       <Select
-        {...field}
-        {...props}
         onValueChange={field.onChange}
-        defaultValue={field.value}
+        {...props}
       >
         <SelectTrigger
           className={
