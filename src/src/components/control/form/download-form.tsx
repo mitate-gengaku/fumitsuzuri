@@ -51,7 +51,7 @@ export const DownloadForm = () => {
             },
           }}
           autoComplete="on"
-          className="focus:outline-sky-500"
+          className="focus:ring-[1.5px] focus:ring-sky-600"
         />
       </div>
       <div className="col-span-2">

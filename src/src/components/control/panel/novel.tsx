@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { NovelTagsCustomizer } from "../customize/novel-tags";
 
 export const NovelControl = () => {
   return (
@@ -17,6 +18,7 @@ export const NovelControl = () => {
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-3 px-4">
         <NovelFormatCustomizer />
+        <NovelTagsCustomizer />
       </CardContent>
     </Card>
   );
