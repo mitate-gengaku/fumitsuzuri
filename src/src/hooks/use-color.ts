@@ -1,21 +1,19 @@
 import { atom, useAtom } from "jotai";
+import { atomFamily } from "jotai/utils";
 import { ChangeEvent } from "react";
-import { atomFamily } from 'jotai/utils';
 
-interface IColor {
+export interface IColor {
   color: string | undefined;
   opacity: string | undefined;
 }
 
-const colorAtom = atom<IColor>({
-  color: "#000",
-  opacity: "1",
-});
-
-const colorFamily = atomFamily((key: string) => atom({
-  color: "#000",
-  opacity: "1",
-}))
+const colorFamily = atomFamily((key: string) =>
+  atom({
+    key: key,
+    color: "#000",
+    opacity: "1",
+  }),
+);
 
 export const useColor = (key: string) => {
   const colorInstance = colorFamily(key);

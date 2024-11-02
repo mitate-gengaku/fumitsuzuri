@@ -1,3 +1,5 @@
+import { ColorCustomizer } from "../customize/color";
+
 import { ThemeCustomizer } from "@/components/control/customize/theme";
 import {
   Card,
@@ -6,8 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { ColorCustomizer } from "../customize/color";
 
 export const AppearanceControl = () => {
   return (

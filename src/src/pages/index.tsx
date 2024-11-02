@@ -15,7 +15,7 @@ const Home = () => {
           variant={"outline"}
           size={"icon"}
           onClick={() => toggleOpen()}
-          className="absolute top-4 right-4"
+          className="absolute right-4 top-4"
         >
           <PanelRightIcon />
         </Button>

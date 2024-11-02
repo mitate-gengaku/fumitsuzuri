@@ -37,10 +37,7 @@ export const FormSelect = <
 
   return (
     <>
-      <Select
-        onValueChange={field.onChange}
-        {...props}
-      >
+      <Select onValueChange={field.onChange} {...props}>
         <SelectTrigger
           className={
             error?.message && "bg-rose-100 text-rose-600 ring-1 ring-rose-500"

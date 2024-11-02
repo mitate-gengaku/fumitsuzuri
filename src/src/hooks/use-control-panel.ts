@@ -1,8 +1,8 @@
-import { atom, useAtom } from "jotai";
+import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { useEffect, useState } from "react";
 
-const controlAtom = atomWithStorage('control', false);
+const controlAtom = atomWithStorage("control", false);
 
 export const useControlPanel = () => {
   const [open, setOpen] = useAtom(controlAtom);

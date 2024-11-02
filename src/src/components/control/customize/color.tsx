@@ -8,10 +8,7 @@ interface Props {
 }
 
 export const ColorCustomizer = (props: Props) => {
-  const {
-    label,
-    colorKey
-  } = props;
+  const { label, colorKey } = props;
   const { color, onSetColor, onSetOpacity } = useColor(colorKey);
 
   return (
@@ -20,7 +17,7 @@ export const ColorCustomizer = (props: Props) => {
       <div className="flex items-center gap-2">
         <Input
           type="color"
-          className="size-6 p-0 m-0 border-0 focus:outline-0"
+          className="m-0 size-6 border-0 p-0 focus:outline-0"
           onChange={onSetColor}
         />
         <Slider

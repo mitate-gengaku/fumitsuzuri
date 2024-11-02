@@ -1,11 +1,9 @@
-
 import { FormInput } from "./input";
 import { FormSelect } from "./select";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useDownload } from "@/hooks/use-download";
-
 
 const exportFileItems = [
   {
@@ -29,7 +27,7 @@ export const DownloadForm = () => {
     <form
       className="grid grid-cols-2 gap-3"
       onSubmit={form.handleSubmit(onDownload)}
-      >
+    >
       <div className="col-span-2">
         <Label htmlFor="name" className="text-xs text-gray-500">
           ファイル名
@@ -45,12 +43,12 @@ export const DownloadForm = () => {
             },
             max: {
               value: 36,
-              message: "最大36文字まで入力できます"
+              message: "最大36文字まで入力できます",
             },
             min: {
               value: 4,
-              message: "4文字以上入力してください"
-            }
+              message: "4文字以上入力してください",
+            },
           }}
           autoComplete="on"
           className="focus:outline-sky-500"
