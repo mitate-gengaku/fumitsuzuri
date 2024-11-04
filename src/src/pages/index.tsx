@@ -1,12 +1,11 @@
-import { CloudUploadIcon, FileIcon, PanelRightIcon, XIcon } from "lucide-react";
+import { FileIcon, PanelRightIcon } from "lucide-react";
 
 import { ZoomCustomizer } from "@/components/control/customize/zoom";
 import { ControlPanel } from "@/components/control/panel/control-panel";
 import { Button } from "@/components/ui/button";
 import { useControlPanel } from "@/hooks/use-control-panel";
-import { Label } from "@/components/ui/label";
 import { useToggleForm } from "@/hooks/use-toggle-form";
-import { DragAndDropZone } from "@/components/control/form/drag-and-drop-zone";
+import { UploadFileForm } from "@/components/control/form/upload-file-form";
 
 const Home = () => {
   const { toggleOpen } = useControlPanel();
@@ -31,7 +30,7 @@ const Home = () => {
         >
           <FileIcon />
         </Button>
-        <DragAndDropZone />
+        <UploadFileForm />
         <ZoomCustomizer />
       </div>
       <ControlPanel />

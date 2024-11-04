@@ -1,69 +1,93 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { FileCard } from "@/components/display/file-card";
 import { Label } from "@/components/ui/label";
+import { useFile } from "@/hooks/use-file";
 import { useToggleForm } from "@/hooks/use-toggle-form"
 import { cn } from "@/utils/cn";
-import { CloudUploadIcon, FileIcon, Trash2Icon, TrashIcon, XIcon } from "lucide-react";
+import { convertBytesToMB } from "@/utils/convert-bytes-to-mb";
+import { CloudUploadIcon, XIcon } from "lucide-react";
+import { ChangeEvent, DragEvent, useMemo, useState } from "react";
+import {
+  FieldError,
+  useController,
+  useForm,
+} from "react-hook-form";
 
-export const FileCard = () => {
-  return (
-    <div className="cursor-default flex items-center rounded-md border gap-4 bg-card text-card-foreground shadow px-6 py-4">
-      <span className={cn(
-        buttonVariants({ variant: "outline", size: "icon" }),
-        "hover:bg-white"
-        )}>
-        <FileIcon className="size-5"/>
-      </span>
-      <div className="flex flex-col">
-        <h3 className="text-sm font-medium">
-          People stopped telling jokes.md
-        </h3>
-        <p className="text-xs text-muted-foreground">42MB</p>
-      </div>
-      <button className="ml-auto hover:text-rose-600 transition-all">
-        <span>
-          <Trash2Icon className="size-4"/>
-        </span>
-      </button>
-    </div>
-  )
+interface Props {
+  isActive: boolean;
+  error: FieldError | undefined
+  onDragEnter: (e: DragEvent<HTMLLabelElement>) => void;
+  onDragLeave: (e: DragEvent<HTMLLabelElement>) => void;
+  onDragOver: (e: DragEvent<HTMLLabelElement>) => void;
+  onDrop: (e: DragEvent<HTMLLabelElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const DragAndDropZone = () => {
+export const DragAndDropZone = (props: Props) => {
   const {
-    show,
-    toggleShow
-  } = useToggleForm();
+    isActive,
+    error,
+    onDragEnter,
+    onDragLeave,
+    onDragOver,
+    onDrop,
+    onChange,
+  } = props;
 
-  if (!show) return <></>
   return (
-    <div className="flex flex-col items-center justify-center gap-4 mx-auto w-full md:w-3/5 xl:w-2/5 font-noto-sans">
-      <button
-        className="ml-auto text-gray-600 hover:text-gray-400 transition-all"
-        onClick={() => toggleShow()}
+    <>
+      <form 
+        className="w-full"
         >
-        <XIcon
-          className="size-4"
+        <Label 
+          htmlFor="file" 
+          className={cn(
+            "flex flex-col items-center justify-center w-full h-72 border-2 border-gray-300 border-dashed rounded-md cursor-pointer bg-card dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 transition-all",
+            isActive && "bg-gray-100 border-gray-600 dark:border-gray-500 dark:bg-gray-600",
+            error && "border-rose-500 dark:border-rose-500 dark:hover:border-rose-600 bg-red-50 hover:bg-red-100 transition-all"
+          )}
+          onDragEnter={onDragEnter}
+          onDragLeave={onDragLeave}
+          onDragOver={onDragOver}
+          onDrop={onDrop}
+          >
+          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+            <CloudUploadIcon
+              className={cn(
+                "size-8 xl:size-12 mb-4 text-gray-500 dark:text-gray-400",
+                error && "text-rose-500 dark:text-rose-600"
+              )}
+              />
+            <p className={cn(
+              "mb-2 text-sm font-medium leading-none text-gray-500 dark:text-gray-400",
+              error && "text-rose-500 dark:text-rose-600"
+              )}>
+              <span className="font-semibold">Click to upload</span> or drag and drop
+            </p>
+            <p className={cn(
+              "text-xs font-medium leading-none text-gray-400 dark:text-gray-300",
+              error && "text-rose-400 dark:text-rose-600"
+              )}>.md, .txt, or .json</p>
+          </div>
+          <input
+            id="file"
+            name="file"
+            type="file"
+            accept=".md,.txt,.json"
+            className="sr-only"
+            value=""
+            onChange={onChange}
+            multiple={false}
           />
-      </button>
-      <Label htmlFor="dropzone-file" className="mb-4 flex flex-col items-center justify-center w-full h-72 border-2 border-gray-300 border-dashed rounded-md cursor-pointer bg-card dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-          <CloudUploadIcon
-            className="size-8 xl:size-12 mb-4 text-gray-500 dark:text-gray-400"
-            />
-          <p className="mb-2 text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
-            <span className="font-semibold">Click to upload</span> or drag and drop
-          </p>
-          <p className="text-xs font-medium leading-none text-gray-500 dark:text-gray-400">.md, .txt, or .json</p>
-        </div>
-        <input id="dropzone-file" type="file" className="hidden" />
-      </Label>
-      <div className="w-full flex flex-col gap-2">
-        <h4 className="text-md font-medium leading-none">
-          アップロードしたファイル
-        </h4>
-        <FileCard />
-      </div>
-    </div> 
+        </Label>   
+      </form>
+      {error && (
+        <p
+          className="w-full mt-1 text-sm text-rose-500 lg:text-base"
+          data-testid="create-book-file-input-error"
+        >
+          {error.message}
+        </p>
+      )}
+    </>
   )
 }

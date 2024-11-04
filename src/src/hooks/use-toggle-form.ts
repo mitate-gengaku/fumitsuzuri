@@ -1,6 +1,7 @@
 import { atom, useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
-const toggleFormAtom = atom(false);
+const toggleFormAtom = atomWithStorage("form", false);
 
 export const useToggleForm = () => {
   const [show, setShow] = useAtom(toggleFormAtom);

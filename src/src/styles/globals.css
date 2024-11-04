@@ -65,3 +65,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: "YuMincho";
+  src: local("Yu Mincho"), local("YuMincho");
+}
+
+@font-face {
+  font-family: "游明朝";
+  src: local("Yu Mincho"), local("YuMincho");
+}

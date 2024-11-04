@@ -57,7 +57,8 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
       fontFamily: {
-        "noto-sans": ['var(--noto-sans-jp)']
+        "noto-sans": ['var(--noto-sans-jp)'],
+				yumin: ['"YuMincho"', '"游明朝"', 'serif'],
       }
   	}
   },
