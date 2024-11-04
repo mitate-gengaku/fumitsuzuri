@@ -10,7 +10,7 @@ export interface IColor {
 const colorFamily = atomFamily((key: string) =>
   atom({
     key: key,
-    color: "#000",
+    color: "#D9D9D9",
     opacity: "1",
   }),
 );

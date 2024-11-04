@@ -1,19 +1,16 @@
-import { FileCard } from "@/components/display/file-card";
-import { Label } from "@/components/ui/label";
+import { ChangeEvent, DragEvent, useState } from "react";
+import { useController, useForm } from "react-hook-form";
+
+import { useCreateBook } from "./use-create-book";
+
 import { useFile } from "@/hooks/use-file";
-import { useToggleForm } from "@/hooks/use-toggle-form"
-import { cn } from "@/utils/cn";
-import { convertBytesToMB } from "@/utils/convert-bytes-to-mb";
-import { CloudUploadIcon, XIcon } from "lucide-react";
-import { ChangeEvent, DragEvent, useMemo, useState } from "react";
-import {
-  FieldError,
-  useController,
-  useForm,
-} from "react-hook-form";
+import { useToggleForm } from "@/hooks/use-toggle-form";
+import { validateFileExtension } from "@/utils/validation-extension";
+
+
 
 interface IValue {
-  file?: File
+  file?: File;
 }
 
 export const useUploadFile = () => {
@@ -21,33 +18,25 @@ export const useUploadFile = () => {
 
   const form = useForm<IValue>({
     defaultValues: {
-      file: undefined
-    }
+      file: undefined,
+    },
   });
-
-  const {
-    file, 
-    setFile
-  } = useFile();
-  const {
-    show,
-    toggleShow
-  } = useToggleForm();
   const {
     field,
-    fieldState: {
-      error
-    }
+    fieldState: { error },
   } = useController({
     name: "file",
     control: form.control,
   });
+  const { file, setFile } = useFile();
+  const { show, toggleShow } = useToggleForm();
+  const { setBookContent } = useCreateBook();
 
   const onDragEnter = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
-    setActive(true)
+    setActive(true);
   };
 
   const onDragLeave = (e: DragEvent<HTMLLabelElement>) => {
@@ -61,14 +50,14 @@ export const useUploadFile = () => {
     e.preventDefault();
     e.stopPropagation();
 
-    setActive(true)
+    setActive(true);
   };
 
   const onDrop = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
-    setActive(false)
+    setActive(false);
 
     const files = e.dataTransfer.files;
 
@@ -80,14 +69,16 @@ export const useUploadFile = () => {
 
     if (isValidate) {
       form.clearErrors("file");
-      field.onChange(file)
+      field.onChange(file);
       setFile(file);
+      setBookContent(file);
       toggleShow();
       return;
     }
     form.setError("file", {
-      message: "ファイルの拡張子が正しくありません。.md, .txt, .jsonのみアップロードしてください。"
-    })
+      message:
+        "ファイルの拡張子が正しくありません。.mdのみアップロードしてください。",
+    });
     return;
   };
 
@@ -99,26 +90,28 @@ export const useUploadFile = () => {
     if (!files || !files.length) return;
 
     const file = files[0];
-  
+
     const isValidate = validateFileExtension(file);
 
     if (isValidate) {
       form.clearErrors("file");
-      field.onChange(file)
+      field.onChange(file);
       setFile(file);
+      setBookContent(file);
       toggleShow();
       return;
     }
     form.setError("file", {
-      message: "ファイルの拡張子が正しくありません。.md, .txt, .jsonのみアップロードしてください。"
-    })
+      message:
+        "ファイルの拡張子が正しくありません。.mdのみアップロードしてください。",
+    });
     return;
-  }
+  };
 
   const onDelete = () => {
-    setFile(undefined)
+    setFile(undefined);
     form.reset();
-  }
+  };
 
   return {
     show,
@@ -132,5 +125,5 @@ export const useUploadFile = () => {
     onDrop,
     onChange,
     onDelete,
-  }
-}
+  };
+};

@@ -18,6 +18,7 @@ export const ColorCustomizer = (props: Props) => {
         <Input
           type="color"
           className="m-0 size-6 border-0 p-0 focus:outline-0"
+          value={color.color}
           onChange={onSetColor}
         />
         <Slider

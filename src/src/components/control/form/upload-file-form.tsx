@@ -1,21 +1,10 @@
-import { FileCard } from "@/components/display/file-card";
-import { Label } from "@/components/ui/label";
-import { useFile } from "@/hooks/use-file";
-import { useToggleForm } from "@/hooks/use-toggle-form"
-import { cn } from "@/utils/cn";
-import { convertBytesToMB } from "@/utils/convert-bytes-to-mb";
-import { CloudUploadIcon, XIcon } from "lucide-react";
-import { ChangeEvent, DragEvent, useMemo, useState } from "react";
-import {
-  FieldError,
-  useController,
-  useForm,
-} from "react-hook-form";
-import { DragAndDropZone } from "./drag-and-drop-zone";
-import { useUploadFile } from "@/hooks/use-upload-file";
+import { XIcon } from "lucide-react";
 
-interface FileInputProps extends React.ComponentProps<"input"> {
-}
+import { DragAndDropZone } from "./drag-and-drop-zone";
+
+import { FileCard } from "@/components/display/file-card";
+import { useUploadFile } from "@/hooks/use-upload-file";
+import { convertBytesToMB } from "@/utils/convert-bytes-to-mb";
 
 export const UploadFileForm = () => {
   const {
@@ -29,19 +18,17 @@ export const UploadFileForm = () => {
     onDragOver,
     onDrop,
     onChange,
-    onDelete
+    onDelete,
   } = useUploadFile();
 
-  if (!show) return <></>
+  if (!show) return <></>;
   return (
-    <div className="flex flex-col items-center justify-center gap-4 mx-auto w-full md:w-3/5 xl:w-2/5 font-noto-sans">
+    <div className="mx-auto flex w-full flex-col items-center justify-center gap-4 font-noto-sans md:w-3/5 xl:w-2/5">
       <button
-        className="ml-auto text-gray-600 hover:text-gray-400 transition-all"
+        className="ml-auto text-gray-600 transition-all hover:text-gray-400"
         onClick={() => toggleShow()}
-        >
-        <XIcon
-          className="size-4"
-          />
+      >
+        <XIcon className="size-4" />
       </button>
       <DragAndDropZone
         isActive={isActive}
@@ -51,19 +38,19 @@ export const UploadFileForm = () => {
         onDragOver={onDragOver}
         onDrop={onDrop}
         onChange={onChange}
-        />
+      />
       {file && (
-        <div className="w-full flex flex-col gap-2">
+        <div className="flex w-full flex-col gap-2">
           <h4 className="text-md font-medium leading-none">
             アップロードしたファイル
           </h4>
-          <FileCard 
+          <FileCard
             name={file.name}
             size={convertBytesToMB(file.size)}
             onDelete={() => onDelete()}
-            />
+          />
         </div>
       )}
-    </div> 
+    </div>
   );
-}
+};

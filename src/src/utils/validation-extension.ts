@@ -1,10 +1,6 @@
-const accepts = [
-  "md",
-  "txt",
-  "json"
-]
+const accepts = ["md"];
 
-const validateFileExtension = (file: File) => {  
+export const validateFileExtension = (file: File) => {
   const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
 
   if (!accepts.includes(extension)) {
@@ -12,4 +8,4 @@ const validateFileExtension = (file: File) => {
   } else {
     return true;
   }
-}
+};

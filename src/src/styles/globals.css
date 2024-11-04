@@ -64,6 +64,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  textarea {
+    overflow-anchor: none;
+  }
 }
 
 @font-face {
