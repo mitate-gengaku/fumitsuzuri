@@ -5,8 +5,8 @@ export interface IYamlData {
   title: string;
   author: string;
   summary: string;
-  price: string;
-  edition: string;
+  price: number;
+  edition: number;
 }
 
 export interface IYamlReturnValue extends IYamlData {

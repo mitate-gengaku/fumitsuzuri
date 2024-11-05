@@ -1,4 +1,4 @@
-import { DownloadForm } from "../form/download-form";
+import { DownloadForm } from "@/components/form/download-form";
 
 import {
   Card,

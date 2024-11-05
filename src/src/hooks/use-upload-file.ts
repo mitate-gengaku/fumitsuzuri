@@ -7,8 +7,6 @@ import { useFile } from "@/hooks/use-file";
 import { useToggleForm } from "@/hooks/use-toggle-form";
 import { validateFileExtension } from "@/utils/validation-extension";
 
-
-
 interface IValue {
   file?: File;
 }
@@ -31,6 +29,10 @@ export const useUploadFile = () => {
   const { file, setFile } = useFile();
   const { show, toggleShow } = useToggleForm();
   const { setBookContent } = useCreateBook();
+  const {
+    book,
+    setBook
+  } = useCreateBook();
 
   const onDragEnter = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
@@ -110,6 +112,14 @@ export const useUploadFile = () => {
 
   const onDelete = () => {
     setFile(undefined);
+    setBook({
+      id: "",
+      title: "",
+      author: "",
+      summary: "",
+      price: "0",
+      edition: "0",
+    })
     form.reset();
   };
 

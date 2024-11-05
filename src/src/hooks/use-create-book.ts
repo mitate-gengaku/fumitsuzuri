@@ -8,8 +8,8 @@ interface IValue {
   title: string;
   author: string;
   summary: string;
-  price: string;
-  edition: string;
+  price: number;
+  edition: number;
 }
 
 const bookAtom = atom<IValue>({
@@ -17,8 +17,8 @@ const bookAtom = atom<IValue>({
   title: "",
   author: "",
   summary: "",
-  price: "0",
-  edition: "0",
+  price: 0,
+  edition: 0,
 });
 
 export const useCreateBook = () => {
@@ -29,8 +29,8 @@ export const useCreateBook = () => {
       title: "",
       author: "",
       summary: "",
-      price: "0",
-      edition: "0",
+      price: 0,
+      edition: 0,
     },
     mode: "onChange",
   });

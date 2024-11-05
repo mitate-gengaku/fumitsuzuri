@@ -1,4 +1,4 @@
-import { TagsInput } from "../form/tags-input";
+import { TagsInput } from "@/components/form/tags-input";
 
 import { Label } from "@/components/ui/label";
 import { useInputTags } from "@/hooks/use-input-tags";
