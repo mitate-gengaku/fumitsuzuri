@@ -1,6 +1,6 @@
 import { atom, useAtom } from "jotai";
 
-const fontFamilyAtom = atom<string>("");
+const fontFamilyAtom = atom<string>("yu-mincho");
 
 export const useFontFamily = () => {
   const [fontFamily, setFontFamily] = useAtom<string>(fontFamilyAtom);

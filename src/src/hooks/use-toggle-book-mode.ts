@@ -1,7 +1,6 @@
-import { useAtom } from "jotai";
-import { atomWithStorage } from "jotai/utils";
+import { atom, useAtom } from "jotai";
 
-const toggleBookModeAtom = atomWithStorage("book-mode", false);
+const toggleBookModeAtom = atom(true);
 
 export const useToggleBookMode = () => {
   const [mode, setMode] = useAtom(toggleBookModeAtom);

@@ -17,16 +17,30 @@ export const getYamlHeader = async (file: File): Promise<IYamlReturnValue> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => {
-      const fileContent = event.target?.result as string;
-      const { data, content } = matter(fileContent);
-      const result = {
-        ...(data as IYamlData),
-        content,
-      };
+      try {
+        const fileContent = event.target?.result as string;
+        const { data, content } = matter(fileContent);
+        const result = {
+          ...(data as IYamlData),
+          content,
+        };
 
-      resolve(result);
+        resolve(result);
+      } catch (e) {
+        if (e instanceof Error) {
+          reject(e);
+        }
+        const error = new Error(String(e));
+        reject(error);
+      }
     };
-    reader.onerror = (error) => reject(error);
+    reader.onerror = (e) => {
+      if (e instanceof Error) {
+        reject(e);
+      }
+      const error = new Error(String(e));
+      reject(error);
+    };
     reader.readAsText(file);
   });
 };

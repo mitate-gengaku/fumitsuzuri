@@ -56,8 +56,8 @@ export const DragAndDropZone = (props: Props) => {
                 error && "text-rose-500 dark:text-rose-600",
               )}
             >
-              <span className="font-semibold">Click to upload</span> or drag and
-              drop
+              <span className="font-semibold">ファイルを選択</span>
+              ・ドラッグアンドドロップ
             </p>
             <p
               className={cn(

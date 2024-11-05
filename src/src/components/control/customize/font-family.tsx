@@ -18,10 +18,10 @@ export const FontFamilyCustomizer = () => {
       </Label>
       <Select value={fontFamily} onValueChange={(value) => onSetFamily(value)}>
         <SelectTrigger className="bg-card font-noto-sans outline-none">
-          <SelectValue placeholder="フォントファミリー" />
+          <SelectValue placeholder="フォントファミリー" defaultValue={"yu-mincho"} />
         </SelectTrigger>
-        <SelectContent className="font-noto-sans">
-          <SelectItem value="font-noto-sans">Noto Sans JP</SelectItem>
+        <SelectContent className="yu-mincho">
+          <SelectItem value="yu-mincho">游明朝</SelectItem>
         </SelectContent>
       </Select>
     </div>

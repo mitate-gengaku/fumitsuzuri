@@ -9,11 +9,11 @@ export const useScreenshot = () => {
       const href = await domToImage.toPng(ref.current, {
         width: 456,
         height: 670,
-        quality: 1,
+        quality: 0.95,
       });
       return href;
     }
-    return "";
+    throw new Error("No element to screenshot");
   }, []);
 
   return { ref, takeScreenshot };

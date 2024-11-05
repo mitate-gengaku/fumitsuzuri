@@ -1,7 +1,4 @@
-import {
-  FileIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { FileIcon, Trash2Icon } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/utils/cn";

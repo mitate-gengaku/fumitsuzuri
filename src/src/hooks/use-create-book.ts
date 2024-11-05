@@ -10,6 +10,7 @@ interface IValue {
   summary: string;
   price: number;
   edition: number;
+  content: string;
 }
 
 const bookAtom = atom<IValue>({
@@ -19,6 +20,7 @@ const bookAtom = atom<IValue>({
   summary: "",
   price: 0,
   edition: 0,
+  content: "",
 });
 
 export const useCreateBook = () => {

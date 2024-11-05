@@ -29,10 +29,7 @@ export const useUploadFile = () => {
   const { file, setFile } = useFile();
   const { show, toggleShow } = useToggleForm();
   const { setBookContent } = useCreateBook();
-  const {
-    book,
-    setBook
-  } = useCreateBook();
+  const { setBook } = useCreateBook();
 
   const onDragEnter = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
@@ -117,9 +114,10 @@ export const useUploadFile = () => {
       title: "",
       author: "",
       summary: "",
-      price: "0",
-      edition: "0",
-    })
+      content: "",
+      price: 0,
+      edition: 0,
+    });
     form.reset();
   };
 

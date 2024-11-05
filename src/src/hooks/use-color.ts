@@ -26,6 +26,7 @@ export const useColor = (key: string) => {
 
   return {
     color,
+    setColor,
     onSetColor,
     onSetOpacity,
   };

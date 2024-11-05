@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/read-book.css";
 import { GeistSans } from "geist/font/sans";
 import { Noto_Sans_JP } from "next/font/google";
 

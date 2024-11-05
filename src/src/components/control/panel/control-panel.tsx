@@ -24,7 +24,6 @@ export const ControlPanel = () => {
               <AppearanceControl />
               <NovelControl />
               <FontControl />
-              <ExportFileControl />
             </>
           )}
         </div>
