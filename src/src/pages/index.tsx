@@ -85,8 +85,8 @@ const Home = () => {
             <div
               className={cn("flex select-none items-center dark:text-gray-900")}
             >
-              <FrontPage ref={frontRef} />
-              <BackPage ref={backRef} />
+              <FrontPage isLoading={isLoading} ref={frontRef} />
+              <BackPage isLoading={isLoading} ref={backRef} />
             </div>
           </div>
         )}

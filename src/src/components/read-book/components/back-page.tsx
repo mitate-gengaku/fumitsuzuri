@@ -9,10 +9,14 @@ import {
 import { useCreateBook } from "@/hooks/use-create-book";
 import { cn } from "@/utils/cn";
 
+interface Props extends React.ComponentProps<"div"> {
+  isLoading: boolean;
+}
+
 export const BackPage = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div">
->((props, ref) => {
+  Props
+>(({ isLoading }, ref) => {
   const { book, setBook } = useCreateBook();
 
   return (
@@ -48,23 +52,29 @@ export const BackPage = React.forwardRef<
               max={100000}
               min={0}
               step={1}
-              className="min-w-4 cursor-pointer bg-transparent focus:outline-1 focus:outline-sky-500 focus:ring-1 focus:ring-sky-500"
+              className={cn(
+                "min-w-4 cursor-pointer bg-transparent",
+                "focus:outline-1 focus:outline-sky-500 focus:ring-1 focus:ring-sky-500",
+                "disabled:cursor-not-allowed"
+              )}
               value={book.price}
               onChange={(e) => {
                 setBook({ ...book, price: parseInt(e.target.value, 10) });
               }}
+              disabled={isLoading}
             />
             <span className="flex-none">円(税別)</span>
           </label>
         </div>
         <textarea
           name="summary"
-          className="cursor-pointer resize-none bg-transparent text-sm focus:outline-1 focus:outline-sky-500 focus:ring-1 focus:ring-sky-500"
+          className="cursor-pointer resize-none bg-transparent text-sm focus:outline-1 focus:outline-sky-500 focus:ring-1 focus:ring-sky-500 disabled:cursor-not-allowed"
           rows={12}
           value={book.summary}
           onChange={(e) => {
             setBook({ ...book, summary: e.target.value });
           }}
+          disabled={isLoading}
         />
       </div>
       <div className="mb-4 h-px w-full bg-gray-400" />
@@ -73,12 +83,13 @@ export const BackPage = React.forwardRef<
           <span className="flex-none">FAKE-ISBN</span>
           <InputOTP
             name="otp"
-            className="cursor-pointer"
+            className="cursor-pointer disabled:cursor-not-allowed"
             maxLength={13}
             value={book.id}
             onChange={(value) => {
               setBook({ ...book, id: value });
             }}
+            disabled={isLoading}
           >
             <InputOTPGroup>
               <InputOTPSlot
@@ -145,9 +156,8 @@ export const BackPage = React.forwardRef<
           <input
             type="number"
             className={cn(
-              "cursor-pointer bg-transparent",
+              "w-10 text-center cursor-pointer bg-transparent disabled:cursor-not-allowed",
               book.edition === 0 && "text-transparent",
-              "w-10 text-center ",
             )}
             max={1000}
             min={0}
@@ -156,6 +166,7 @@ export const BackPage = React.forwardRef<
             onChange={(e) => {
               setBook({ ...book, edition: parseInt(e.target.value, 10) });
             }}
+            disabled={isLoading}
           />
           {book.edition >= 1 && "版"}
         </div>
