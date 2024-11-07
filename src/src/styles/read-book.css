@@ -1,0 +1,108 @@
+#page {
+  height: 670px;
+  width: 456px;
+  position: absolute;
+  top: calc(50% - 335px);
+  transform-style: preserve-3d;
+  transition-duration: 2s;
+}
+#page div {
+  height: 670px;
+  width: 24px;
+  position: absolute;
+  right: calc(24px - 1px);
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+  background-color: #dfdac8;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+  font-size: 16px;
+  writing-mode: vertical-lr;
+}
+#page div span {
+  font-size: 12px;
+}
+
+#page div:before {
+  padding: 56px 0 0;
+  backface-visibility: hidden;
+}
+
+#page div:after {
+  padding: 56px 0 0;
+  backface-visibility: hidden;
+}
+.flip {
+  right: 50%;
+  transform-origin: right;
+  transform: perspective(1500px) rotatey(0deg);
+}
+.flip::before {
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 670px;
+  background-color: #dfdac8;
+  content: "";
+  right: 0;
+}
+.flip-active {
+  transform: perspective(1500px) rotatey(180deg) !important;
+}
+.flip-active::before {
+  transform: perspective(1500px) rotatey(180deg) !important;
+}
+.flip-deactive {
+  transform: perspective(1500px) rotatey(0deg) !important;
+}
+.flip-deactive::before {
+  transform: perspective(1500px) rotatey(0deg) !important;
+}
+.flip-active div > div {
+  animation: page 4s ease-in-out;
+}
+.flip-deactive div > div {
+  animation: deactive-page 4s ease-in-out;
+}
+.indent-before:before {
+  text-indent: 16px;
+}
+.indent-after:after {
+  text-indent: 16px;
+}
+
+@keyframes page {
+  15% {
+    transform: rotateY(-6deg);
+  }
+  50% {
+    transform: rotateY(-2deg);
+  }
+  65% {
+    transform: rotateY(-1deg);
+  }
+  90% {
+    transform: rotateY(-0.5deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes deactive-page {
+  15% {
+    transform: rotateY(6deg);
+  }
+  50% {
+    transform: rotateY(2deg);
+  }
+  65% {
+    transform: rotateY(1deg);
+  }
+  90% {
+    transform: rotateY(0.5deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
