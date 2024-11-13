@@ -38,7 +38,7 @@ const Home = () => {
   return (
     <>
       <SEO
-        title={`Fumitsuzuri | ファイルで作る小説執筆ツール`}
+        title={`Fumitsuzuri | ファイルで作る小説執筆・プレビューサービス`}
         description={"Fumitsuzuriは小説家・執筆化向けの小説執筆・プレビューサービスです。執筆した小説を簡単にプレビューすることができます。"}
         url={"https://fumitsuzuri.com"}
         canonical={"https://fumitsuzuri.com"}
