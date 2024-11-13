@@ -61,10 +61,10 @@ export const SEO = (props: Props) => {
     title,
     description,
     url,
-    type = "article",
-    image = "/base_thumbnail_image.png",
+    type = "website",
+    image = "/summary_base_thumbnail_image.png",
     canonical,
-    siteName = "Shomotsu",
+    siteName = "Fumitsuzuri",
     icon = "/favicon.ico",
     twitter,
   } = props;
