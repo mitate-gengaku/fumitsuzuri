@@ -84,7 +84,7 @@ export const SEO = (props: Props) => {
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={`${url}/${image}`} />
 
       {twitter && (
         <>
@@ -105,7 +105,7 @@ export const SEO = (props: Props) => {
 
           <meta
             name="twitter:image"
-            content={twitter.twitterImage ? twitter.twitterImage : image}
+            content={twitter.twitterImage ? `${url}/${twitter.twitterImage}` : `${url}/${image}`}
           />
         </>
       )}
