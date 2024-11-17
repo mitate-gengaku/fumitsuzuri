@@ -1,4 +1,4 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, Insta } from "@radix-ui/react-icons";
 import { LightbulbIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -19,7 +19,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/utils/cn";
-
 
 export const AboutControl = () => {
   return (
