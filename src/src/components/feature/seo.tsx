@@ -105,7 +105,11 @@ export const SEO = (props: Props) => {
 
           <meta
             name="twitter:image"
-            content={twitter.twitterImage ? `${url}/${twitter.twitterImage}` : `${url}/${image}`}
+            content={
+              twitter.twitterImage
+                ? `${url}/${twitter.twitterImage}`
+                : `${url}/${image}`
+            }
           />
         </>
       )}

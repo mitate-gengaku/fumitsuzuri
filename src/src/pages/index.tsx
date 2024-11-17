@@ -39,7 +39,9 @@ const Home = () => {
     <>
       <SEO
         title={`Fumitsuzuri | ファイルで作る小説執筆・プレビューサービス`}
-        description={"Fumitsuzuriは小説家・執筆化向けの小説執筆・プレビューサービスです。執筆した小説を簡単にプレビューすることができます。"}
+        description={
+          "Fumitsuzuriは小説家・執筆化向けの小説執筆・プレビューサービスです。執筆した小説を簡単にプレビューすることができます。"
+        }
         url={"https://fumitsuzuri.com"}
         canonical={"https://fumitsuzuri.com"}
         twitter={{
@@ -116,8 +118,8 @@ const Home = () => {
 
 export const getServerSideProps = () => {
   return {
-    props: {}
-  }
-}
+    props: {},
+  };
+};
 
 export default Home;

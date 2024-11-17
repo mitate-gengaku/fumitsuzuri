@@ -23,7 +23,7 @@ export const FontFamilyCustomizer = () => {
             defaultValue={"yu-mincho"}
           />
         </SelectTrigger>
-        <SelectContent className="yu-mincho">
+        <SelectContent className="font-noto-sans">
           <SelectItem value="yu-mincho">游明朝</SelectItem>
         </SelectContent>
       </Select>
