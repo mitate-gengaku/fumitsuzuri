@@ -1,5 +1,4 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { LightbulbIcon } from "lucide-react";
 import Link from "next/link";
 
 import LogoIcon from "@/components/icons/logo";
@@ -33,31 +32,6 @@ export const AboutControl = () => {
       </CardHeader>
       <CardContent className="flex flex-col gap-2 px-4">
         <TooltipProvider>
-          <div className="flex flex-col gap-2">
-            <h3 className="text-xs text-muted-foreground">各種コンテンツ</h3>
-            <div className="flex items-center gap-2">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant={"outline"} asChild>
-                    <Link
-                      href={"/"}
-                      className={cn(
-                        buttonVariants({
-                          variant: "outline",
-                          size: "icon",
-                        }),
-                      )}
-                    >
-                      <LightbulbIcon />
-                    </Link>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="font-noto-sans">
-                  よくある質問
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-xs text-muted-foreground">各種SNS</h3>
             <div className="flex items-center gap-2">
